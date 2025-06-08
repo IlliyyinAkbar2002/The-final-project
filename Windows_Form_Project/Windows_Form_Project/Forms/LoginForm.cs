@@ -9,13 +9,13 @@ namespace Windows_Form_Project.Forms
     public partial class LoginForm : Form
     {
         private UserManager userManager;
-        private LandingPageForm landingPageForm;
+        private LandingPageForm landingPage;
 
-        public LoginForm(UserManager userManager, LandingPageForm landingPageForm)
+        public LoginForm(UserManager userManager)
         {
             InitializeComponent();
             this.userManager = userManager;
-            this.landingPageForm = landingPageForm;
+            this.landingPage = landingPage;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -49,9 +49,15 @@ namespace Windows_Form_Project.Forms
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            AppStateManager.ChangeState(State.Home);
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }

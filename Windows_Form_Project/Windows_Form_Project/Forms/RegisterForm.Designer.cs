@@ -21,84 +21,103 @@
 
         private void InitializeComponent()
         {
-            this.usernameTextBox = new TextBox();
-            this.passwordTextBox = new TextBox();
-            this.namaTextBox = new TextBox();
-            this.nikTextBox = new TextBox();
-            this.rtTextBox = new TextBox();
-            this.rwTextBox = new TextBox();
-            this.registerButton = new Button();
-            this.cancelButton = new Button();
-            this.SuspendLayout();
-
-            // Username TextBox
+            usernameTextBox = new TextBox();
+            passwordTextBox = new TextBox();
+            namaTextBox = new TextBox();
+            nikTextBox = new TextBox();
+            rtTextBox = new TextBox();
+            rwTextBox = new TextBox();
+            registerButton = new Button();
+            cancelButton = new Button();
+            SuspendLayout();
+            // 
+            // usernameTextBox
+            // 
             usernameTextBox.Location = new Point(140, 30);
             usernameTextBox.Name = "usernameTextBox";
-            usernameTextBox.Size = new Size(200, 23);
             usernameTextBox.PlaceholderText = "Username";
-
-            // Password TextBox
+            usernameTextBox.Size = new Size(200, 23);
+            usernameTextBox.TabIndex = 0;
+            // 
+            // passwordTextBox
+            // 
             passwordTextBox.Location = new Point(140, 65);
             passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(200, 23);
             passwordTextBox.PlaceholderText = "Password";
+            passwordTextBox.Size = new Size(200, 23);
+            passwordTextBox.TabIndex = 1;
             passwordTextBox.UseSystemPasswordChar = true;
-
-            // Nama TextBox
+            // 
+            // namaTextBox
+            // 
             namaTextBox.Location = new Point(140, 100);
             namaTextBox.Name = "namaTextBox";
-            namaTextBox.Size = new Size(200, 23);
             namaTextBox.PlaceholderText = "Nama Lengkap";
-
-            // NIK TextBox
+            namaTextBox.Size = new Size(200, 23);
+            namaTextBox.TabIndex = 2;
+            // 
+            // nikTextBox
+            // 
             nikTextBox.Location = new Point(140, 135);
             nikTextBox.Name = "nikTextBox";
-            nikTextBox.Size = new Size(200, 23);
             nikTextBox.PlaceholderText = "NIK (16 digit)";
-
-            // RT TextBox
+            nikTextBox.Size = new Size(200, 23);
+            nikTextBox.TabIndex = 3;
+            // 
+            // rtTextBox
+            // 
             rtTextBox.Location = new Point(140, 170);
             rtTextBox.Name = "rtTextBox";
-            rtTextBox.Size = new Size(90, 23);
             rtTextBox.PlaceholderText = "RT";
-
-            // RW TextBox
+            rtTextBox.Size = new Size(90, 23);
+            rtTextBox.TabIndex = 4;
+            // 
+            // rwTextBox
+            // 
             rwTextBox.Location = new Point(250, 170);
             rwTextBox.Name = "rwTextBox";
-            rwTextBox.Size = new Size(90, 23);
             rwTextBox.PlaceholderText = "RW";
-
-            // Register Button
+            rwTextBox.Size = new Size(90, 23);
+            rwTextBox.TabIndex = 5;
+            // 
+            // registerButton
+            // 
             registerButton.Location = new Point(140, 210);
             registerButton.Name = "registerButton";
             registerButton.Size = new Size(90, 30);
+            registerButton.TabIndex = 6;
             registerButton.Text = "Register";
             registerButton.UseVisualStyleBackColor = true;
-            registerButton.Click += new EventHandler(registerButton_Click);
-
-            // Cancel Button
+            registerButton.Click += registerButton_Click;
+            // 
+            // cancelButton
+            // 
             cancelButton.Location = new Point(250, 210);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(90, 30);
+            cancelButton.TabIndex = 7;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += new EventHandler(cancelButton_Click);
-
+            cancelButton.Click += cancelButton_Click;
+            // 
             // RegisterForm
-            this.AutoScaleDimensions = new SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(400, 270);
-            this.Controls.Add(usernameTextBox);
-            this.Controls.Add(passwordTextBox);
-            this.Controls.Add(namaTextBox);
-            this.Controls.Add(nikTextBox);
-            this.Controls.Add(rtTextBox);
-            this.Controls.Add(rwTextBox);
-            this.Controls.Add(registerButton);
-            this.Controls.Add(cancelButton);
-            this.Name = "RegisterForm";
-            this.Text = "Form Pendaftaran";
-            this.ResumeLayout(false);
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(400, 270);
+            Controls.Add(usernameTextBox);
+            Controls.Add(passwordTextBox);
+            Controls.Add(namaTextBox);
+            Controls.Add(nikTextBox);
+            Controls.Add(rtTextBox);
+            Controls.Add(rwTextBox);
+            Controls.Add(registerButton);
+            Controls.Add(cancelButton);
+            Name = "RegisterForm";
+            Text = "Form Pendaftaran";
+            Load += RegisterForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

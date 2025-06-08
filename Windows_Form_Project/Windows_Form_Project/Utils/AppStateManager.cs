@@ -46,15 +46,16 @@ namespace Windows_Form_Project.Utils
                     break;
 
                 case State.MainMenu:
-                    User userContext = GetCurrentUser();
                     if (userContext == null)
                     {
                         MessageBox.Show("MainMenu requires a logged-in user.");
                         return;
                     }
-                   
-                    CurrentForm = new MainMenuForm(currentUser, UserManager.GetInstance());
+
+                    currentUser = userContext;
+                    CurrentForm = new MainMenuForm(userContext, UserManager.GetInstance());
                     break;
+
 
                 case State.Logout:
                     currentUser = null;

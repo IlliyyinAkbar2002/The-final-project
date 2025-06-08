@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Windows_Form_Project.Models;
 using Windows_Form_Project.Services;
+using Windows_Form_Project.Utils;
 
 namespace Windows_Form_Project.Forms
 {
@@ -10,7 +11,7 @@ namespace Windows_Form_Project.Forms
         private UserManager userManager;
         private Form landingPage;
 
-        public RegisterForm(UserManager userManager , Form landingPage)
+        public RegisterForm(UserManager userManager)
         {
             InitializeComponent();
             this.userManager = userManager;
@@ -52,7 +53,7 @@ namespace Windows_Form_Project.Forms
                 userManager.Register(username, password, role, nama, nik, rt, rw);
                 MessageBox.Show("Registration successful!");
                 this.Close();
-landingPage.Show(); // show back the landing page
+                AppStateManager.ChangeState(State.Home);
 
             }
             catch (Exception ex)
@@ -64,6 +65,12 @@ landingPage.Show(); // show back the landing page
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            AppStateManager.ChangeState(State.Home);
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

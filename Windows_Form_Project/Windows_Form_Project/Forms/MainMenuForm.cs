@@ -46,28 +46,30 @@ namespace Windows_Form_Project.Forms
             {
                 btn.Visible = false;
             }
+
             if (currentUser.Role == Role.Admin)
             {
-                actionMap.Add(viewProfileButton, () => ViewProfile());
-                actionMap.Add(createPostButton, () => CreatePost());
-                actionMap.Add(searchUserButton, () => SearchUser());
-                actionMap.Add(createUserButton, () => CreateUser());
-                actionMap.Add(viewAllPostsButton, () => ViewAllPosts());
-                actionMap.Add(deletePostButton, () => DeletePost());
+                AddAction(viewProfileButton, () => ViewProfile());
+                AddAction(createPostButton, () => CreatePost());
+                AddAction(searchUserButton, () => SearchUser());
+                AddAction(createUserButton, () => CreateUser());
+                AddAction(viewAllPostsButton, () => ViewAllPosts());
+                AddAction(deletePostButton, () => DeletePost());
             }
+
             else if (currentUser.Role == Role.Lurah)
             {
-                actionMap.Add(viewProfileButton, () => ViewProfile());
-                actionMap.Add(approveRejectButton, () => ReviewPending());
-                actionMap.Add(changeStatusButton, () => ReviewApproved());
-                actionMap.Add(deletePostButton, () => DeletePost());
+                AddAction(viewProfileButton, () => ViewProfile());
+                AddAction(approveRejectButton, () => ReviewPending());
+                AddAction(changeStatusButton, () => ReviewApproved());
+                AddAction(deletePostButton, () => DeletePost());
             }
             else // Masyarakat
             {
-                actionMap.Add(viewProfileButton, () => ViewProfile());
-                actionMap.Add(createPostButton, () => CreatePost());
-                actionMap.Add(viewAllPostsButton, () => ViewMyPosts());
-                actionMap.Add(deletePostButton, () => DeleteOwnPost());
+                AddAction(viewProfileButton, () => ViewProfile());
+                AddAction(createPostButton, () => CreatePost());
+                AddAction(viewAllPostsButton, () => ViewMyPosts());
+                AddAction(deletePostButton, () => DeleteOwnPost());
             }
 
             //// Attach actions to buttons
@@ -97,6 +99,16 @@ namespace Windows_Form_Project.Forms
         {
             this.Close();
             AppStateManager.ChangeState(State.Logout);
+        }
+
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void welcomeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

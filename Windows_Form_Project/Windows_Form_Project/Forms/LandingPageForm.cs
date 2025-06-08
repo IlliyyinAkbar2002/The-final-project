@@ -26,13 +26,13 @@ namespace Windows_Form_Project.Forms
         private void loginButton_Click(object sender, EventArgs e)
         {
             AppStateManager.ChangeState(State.Login);
-            this.Hide(); // Optionally hide it until Login completes
+            //this.Hide(); // Optionally hide it until Login completes
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
             AppStateManager.ChangeState(State.Register);
-            this.Hide();
+            //this.Hide();
         }
 
 
