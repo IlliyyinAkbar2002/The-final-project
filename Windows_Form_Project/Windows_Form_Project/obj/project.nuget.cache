@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GmghIOuDsvs=",
+  "dgSpecHash": "AkEXLWny70g=",
   "success": true,
-  "projectFilePath": "E:\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\HP\\Documents\\Tugas\\10\\UAS\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
