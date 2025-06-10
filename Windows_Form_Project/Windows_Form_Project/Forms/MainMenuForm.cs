@@ -84,7 +84,7 @@ namespace Windows_Form_Project.Forms
             button.Visible = true;
             button.Click += (s, e) => action.Invoke();
         }
-        private void ViewProfile() => MessageBox.Show("View Profile Clicked");
+        private void ViewProfile() => AppStateManager.ChangeState(State.ViewProfile);
         private void CreatePost() => MessageBox.Show("Create Post Clicked");
         private void SearchUser() => MessageBox.Show("Search User Clicked");
         private void CreateUser() => MessageBox.Show("Create User Clicked");
@@ -109,6 +109,12 @@ namespace Windows_Form_Project.Forms
         private void welcomeLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void viewProfileButton_Click(object sender, EventArgs e)
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.ViewProfile, currentUser);
         }
     }
 }

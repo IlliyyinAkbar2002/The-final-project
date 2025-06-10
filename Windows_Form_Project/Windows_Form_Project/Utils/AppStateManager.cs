@@ -12,14 +12,18 @@ namespace Windows_Form_Project.Utils
         Login,
         Register,
         MainMenu,
-        Logout
+        Logout,
+
+        ViewProfile
     }
 
     public static class AppStateManager
     {
         public static State CurrentState { get; private set; } 
         public static Form CurrentForm { get; private set; }
-        public static User currentUser;
+        public static User currentUser { get; private set; }
+        public static bool IsLoggedIn => currentUser != null;
+
         public static void ChangeState(State newState, User userContext = null)
         {
             CurrentState = newState;
@@ -46,6 +50,7 @@ namespace Windows_Form_Project.Utils
                     break;
 
                 case State.MainMenu:
+
                     if (userContext == null)
                     {
                         MessageBox.Show("MainMenu requires a logged-in user.");
@@ -62,6 +67,12 @@ namespace Windows_Form_Project.Utils
                     ChangeState(State.Home); // Go back to Home screen on logout
                     return;
 
+                case State.ViewProfile:
+                    CurrentForm = new ViewProfileForm(currentUser, UserManager.GetInstance());
+                    CurrentForm.Show();
+
+                    return;
+
                 default:
                     MessageBox.Show("Invalid state.");
                     return;
@@ -70,6 +81,12 @@ namespace Windows_Form_Project.Utils
             CurrentForm.Show();
         }
         public static User GetCurrentUser() => currentUser;
+
+        public static void Logout()
+        {
+            currentUser = null;
+        }
+
     }
 }
 

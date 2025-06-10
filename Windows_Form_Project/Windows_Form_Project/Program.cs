@@ -14,6 +14,9 @@ namespace Windows_Form_Project
 
             // Start with LandingForm using AppStateManager
             AppStateManager.ChangeState(State.Home);
+            
+            AppStateManager.Logout(); // optional safety net
+
             Application.Run(AppStateManager.CurrentForm);
         }
     }

@@ -58,6 +58,7 @@
             viewProfileButton.TabIndex = 1;
             viewProfileButton.Text = "View Profile";
             viewProfileButton.UseVisualStyleBackColor = true;
+            viewProfileButton.Click += viewProfileButton_Click;
             // 
             // createPostButton
             // 
