@@ -69,6 +69,9 @@ namespace Windows_Form_Project.Forms
                 AddAction(viewAllPostsButton, ViewMyPosts);
                 AddAction(deletePostButton, DeleteOwnPost);
             }
+
+            // Reposition logout below visible buttons
+            logoutButton.Location = new Point(30, buttonPanel.Bottom + 10);
         }
 
         private void AddAction(Button button, Action action)
