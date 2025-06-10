@@ -14,7 +14,9 @@ namespace Windows_Form_Project.Utils
         MainMenu,
         Logout,
 
-        ViewProfile
+        ViewProfile,
+        CreatePost,
+
     }
 
     public static class AppStateManager
@@ -61,7 +63,6 @@ namespace Windows_Form_Project.Utils
                     CurrentForm = new MainMenuForm(userContext, UserManager.GetInstance());
                     break;
 
-
                 case State.Logout:
                     currentUser = null;
                     ChangeState(State.Home); // Go back to Home screen on logout
@@ -72,6 +73,16 @@ namespace Windows_Form_Project.Utils
                     CurrentForm.Show();
 
                     return;
+
+                case State.CreatePost:
+                    if (currentUser == null)
+                    {
+                        MessageBox.Show("You must be logged in to create a post.");
+                        return;
+                    }
+                    CurrentForm = new CreatePostForm(currentUser); // Pass username
+                    break;
+
 
                 default:
                     MessageBox.Show("Invalid state.");

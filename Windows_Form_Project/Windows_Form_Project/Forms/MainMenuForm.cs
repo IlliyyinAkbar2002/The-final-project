@@ -29,7 +29,6 @@ namespace Windows_Form_Project.Forms
         {
             actionMap = new Dictionary<Button, Action>();
 
-            // Hide all buttons first
             var allButtons = new List<Button>
             {
                 viewProfileButton,
@@ -47,52 +46,67 @@ namespace Windows_Form_Project.Forms
                 btn.Visible = false;
             }
 
+            // Table-driven configuration per role
+            AddAction(viewProfileButton, ViewProfile); // shared by all roles
+
             if (currentUser.Role == Role.Admin)
             {
-                AddAction(viewProfileButton, () => ViewProfile());
-                AddAction(createPostButton, () => CreatePost());
-                AddAction(searchUserButton, () => SearchUser());
-                AddAction(createUserButton, () => CreateUser());
-                AddAction(viewAllPostsButton, () => ViewAllPosts());
-                AddAction(deletePostButton, () => DeletePost());
+                AddAction(createPostButton, CreatePost);
+                AddAction(searchUserButton, SearchUser);
+                AddAction(createUserButton, CreateUser);
+                AddAction(viewAllPostsButton, ViewAllPosts);
+                AddAction(deletePostButton, DeletePost);
             }
-
             else if (currentUser.Role == Role.Lurah)
             {
-                AddAction(viewProfileButton, () => ViewProfile());
-                AddAction(approveRejectButton, () => ReviewPending());
-                AddAction(changeStatusButton, () => ReviewApproved());
-                AddAction(deletePostButton, () => DeletePost());
+                AddAction(approveRejectButton, ReviewPending);
+                AddAction(changeStatusButton, ReviewApproved);
+                AddAction(deletePostButton, DeletePost);
             }
             else // Masyarakat
             {
-                AddAction(viewProfileButton, () => ViewProfile());
-                AddAction(createPostButton, () => CreatePost());
-                AddAction(viewAllPostsButton, () => ViewMyPosts());
-                AddAction(deletePostButton, () => DeleteOwnPost());
+                AddAction(createPostButton, CreatePost);
+                AddAction(viewAllPostsButton, ViewMyPosts);
+                AddAction(deletePostButton, DeleteOwnPost);
             }
-
-            //// Attach actions to buttons
-            //foreach (var entry in actionMap)
-            //{
-            //    entry.Key.Click += (s, e) => entry.Value.Invoke();
-            //}
         }
+
         private void AddAction(Button button, Action action)
         {
             actionMap[button] = action;
             button.Visible = true;
             button.Click += (s, e) => action.Invoke();
         }
-        private void ViewProfile() => AppStateManager.ChangeState(State.ViewProfile);
-        private void CreatePost() => MessageBox.Show("Create Post Clicked");
+
+        // =========================
+        // === Button Logic Below ===
+        // =========================
+        private void ViewProfile()
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.ViewProfile, currentUser);
+        }
+
+        private void CreatePost()
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.CreatePost, currentUser);
+        }
+
         private void SearchUser() => MessageBox.Show("Search User Clicked");
+
         private void CreateUser() => MessageBox.Show("Create User Clicked");
+
         private void ViewAllPosts() => MessageBox.Show("View All Posts Clicked");
+
         private void ReviewPending() => MessageBox.Show("Review Pending Posts Clicked");
+
         private void ReviewApproved() => MessageBox.Show("Review Approved Posts Clicked");
+
         private void ViewMyPosts() => MessageBox.Show("View My Posts Clicked");
+
         private void DeletePost() => MessageBox.Show("Delete Post Clicked");
+
         private void DeleteOwnPost() => MessageBox.Show("Delete Own Post Clicked");
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -101,20 +115,13 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.Logout);
         }
 
-        private void MainMenuForm_Load(object sender, EventArgs e)
+        private void MainMenuForm_Load(object sender, EventArgs e) { }
+
+        private void welcomeLabel_Click(object sender, EventArgs e) { }
+
+        private void createPostButton_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void welcomeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void viewProfileButton_Click(object sender, EventArgs e)
-        {
-            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
-            AppStateManager.ChangeState(State.ViewProfile, currentUser);
         }
     }
 }

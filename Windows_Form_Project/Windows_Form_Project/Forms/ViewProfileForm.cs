@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows_Form_Project.Models;
 using Windows_Form_Project.Services;
+using Windows_Form_Project.Utils; 
 
 namespace Windows_Form_Project.Forms
 {
@@ -54,5 +55,12 @@ namespace Windows_Form_Project.Forms
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AppStateManager.ChangeState(State.MainMenu, currentUser);
+        }
     }
 }
+

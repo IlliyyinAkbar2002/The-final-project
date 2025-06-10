@@ -134,7 +134,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(143, 23);
             textBox3.TabIndex = 10;
-            
             // 
             // textBox4
             // 
@@ -177,6 +176,7 @@
             button1.TabIndex = 15;
             button1.Text = "Back";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 

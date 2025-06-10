@@ -58,7 +58,6 @@
             viewProfileButton.TabIndex = 1;
             viewProfileButton.Text = "View Profile";
             viewProfileButton.UseVisualStyleBackColor = true;
-            viewProfileButton.Click += viewProfileButton_Click;
             // 
             // createPostButton
             // 
@@ -68,6 +67,7 @@
             createPostButton.TabIndex = 2;
             createPostButton.Text = "Create Post";
             createPostButton.UseVisualStyleBackColor = true;
+            createPostButton.Click += createPostButton_Click;
             // 
             // searchUserButton
             // 
