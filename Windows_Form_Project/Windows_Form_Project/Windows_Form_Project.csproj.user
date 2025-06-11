@@ -19,6 +19,9 @@
     <Compile Update="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\PostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

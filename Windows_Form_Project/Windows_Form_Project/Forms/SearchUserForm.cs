@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Windows_Form_Project.Models;
 using Windows_Form_Project.Services;
+using Windows_Form_Project.Utils;
 
 
 namespace Windows_Form_Project.Forms
@@ -11,20 +12,16 @@ namespace Windows_Form_Project.Forms
     public partial class SearchUserForm : Form
     {
         private List<User> allUsers = new();
-        private readonly User currentUser;
         private readonly UserManager userManager;
-        private readonly User currentSessionUser;
 
-        public SearchUserForm(User currentUser, UserManager userManager, User currentSessionUser = null)
+        private readonly User currentUser;
+
+        public SearchUserForm(User currentUser, UserManager userManager)
         {
             InitializeComponent();
             this.currentUser = currentUser;
             this.userManager = userManager;
-            this.currentSessionUser = currentSessionUser;
-
-            // load user list, setup event handlers, etc.
         }
-
 
 
 
@@ -118,8 +115,7 @@ namespace Windows_Form_Project.Forms
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
-
-
+            AppStateManager.ChangeState(State.MainMenu, currentUser);   
         }
     }
 }
