@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Windows_Form_Project.Models;
 using Windows_Form_Project.Services;
@@ -38,7 +39,9 @@ namespace Windows_Form_Project.Forms
                 viewAllPostsButton,
                 approveRejectButton,
                 changeStatusButton,
-                deletePostButton
+                deletePostButton,
+                viewFinishedPostsButton,
+                viewApprovedPostsButton
             };
 
             foreach (var btn in allButtons)
@@ -49,28 +52,32 @@ namespace Windows_Form_Project.Forms
             // Table-driven configuration per role
             AddAction(viewProfileButton, ViewProfile); // shared by all roles
             AddAction(createPostButton, CreatePost);
+            AddAction(viewApprovedPostsButton, ViewAllApprovedPosts); // Global approved posts
+            AddAction(viewFinishedPostsButton, ViewFinishedPosts);
 
             if (currentUser.Role == Role.Admin)
             {
                 AddAction(searchUserButton, SearchUser);
                 AddAction(createUserButton, CreateUser);
-                AddAction(viewAllPostsButton, ViewAllPosts);
-                AddAction(deletePostButton, DeletePost);
+                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
             }
             else if (currentUser.Role == Role.Lurah)
             {
                 AddAction(approveRejectButton, ReviewPending);
                 AddAction(changeStatusButton, ReviewApproved);
-                AddAction(deletePostButton, DeletePost);
+                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
+                AddAction(viewFinishedPostsButton, ViewFinishedPosts);
             }
             else // Masyarakat
             {
-                AddAction(viewAllPostsButton, ViewMyPosts);
-                AddAction(deletePostButton, DeleteOwnPost);
+                // Global finished posts
+                AddAction(viewAllPostsButton, ViewMyPosts);                // Own posts
             }
 
             // Reposition logout below visible buttons
             logoutButton.Location = new Point(30, buttonPanel.Bottom + 10);
+            this.Height = logoutButton.Bottom + 50; // gives 50px margin at the bottom
+
         }
 
         private void AddAction(Button button, Action action)
@@ -107,39 +114,33 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.Register, currentUser);
         }
 
-        private void ViewAllPosts()
+        private void ViewAllApprovedPosts()
         {
-            var form = new PostForm("Approved", currentUser); // Admin: view/delete approved posts
+            var form = new PostForm("Approved", currentUser);
+            form.ShowDialog();
+        }
+
+        private void ViewFinishedPosts()
+        {
+            var form = new PostForm("Finished", currentUser);
             form.ShowDialog();
         }
 
         private void ReviewPending()
         {
-            var form = new PostForm("Pending", currentUser); // Lurah: approve/reject
+            var form = new PostForm("Pending", currentUser);
             form.ShowDialog();
         }
 
         private void ReviewApproved()
         {
-            var form = new PostForm("Approved", currentUser); // Lurah: finish approved posts
+            var form = new PostForm("Approved", currentUser);
             form.ShowDialog();
         }
 
         private void ViewMyPosts()
         {
-            var form = new PostForm("MyPosts", currentUser); // Masyarakat: view/delete own posts
-            form.ShowDialog();
-        }
-
-        private void DeletePost()
-        {
-            var form = new PostForm("Approved", currentUser); // Admin: same form, delete on click
-            form.ShowDialog();
-        }
-
-        private void DeleteOwnPost()
-        {
-            var form = new PostForm("MyPosts", currentUser); // Masyarakat: same form, delete on click
+            var form = new PostForm("MyPosts", currentUser);
             form.ShowDialog();
         }
 
@@ -153,12 +154,14 @@ namespace Windows_Form_Project.Forms
 
         private void welcomeLabel_Click(object sender, EventArgs e) { }
 
-        private void createPostButton_Click(object sender, EventArgs e)
+        private void createPostButton_Click(object sender, EventArgs e) { }
+
+        private void viewAllPostsButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void viewAllPostsButton_Click(object sender, EventArgs e)
+        private void viewAllPostsButton_Click_1(object sender, EventArgs e)
         {
 
         }

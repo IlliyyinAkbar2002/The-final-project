@@ -13,6 +13,9 @@
         private Button approveRejectButton;
         private Button changeStatusButton;
         private Button deletePostButton;
+        private Button viewApprovedPostsButton;
+        private Button viewFinishedPostsButton;
+
         private Button logoutButton;
         private FlowLayoutPanel buttonPanel;
 
@@ -38,6 +41,8 @@
             deletePostButton = new Button();
             logoutButton = new Button();
             buttonPanel = new FlowLayoutPanel();
+            viewApprovedPostsButton = new Button();
+            viewFinishedPostsButton = new Button();
             buttonPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,9 +99,9 @@
             viewAllPostsButton.Name = "viewAllPostsButton";
             viewAllPostsButton.Size = new Size(200, 30);
             viewAllPostsButton.TabIndex = 4;
-            viewAllPostsButton.Text = "View All Posts";
+            viewAllPostsButton.Text = "View My Posts";
             viewAllPostsButton.UseVisualStyleBackColor = true;
-            viewAllPostsButton.Click += viewAllPostsButton_Click;
+            viewAllPostsButton.Click += viewAllPostsButton_Click_1;
             // 
             // approveRejectButton
             // 
@@ -146,18 +151,38 @@
             buttonPanel.Controls.Add(approveRejectButton);
             buttonPanel.Controls.Add(changeStatusButton);
             buttonPanel.Controls.Add(deletePostButton);
+            buttonPanel.Controls.Add(viewApprovedPostsButton);
+            buttonPanel.Controls.Add(viewFinishedPostsButton);
             buttonPanel.FlowDirection = FlowDirection.TopDown;
             buttonPanel.Location = new Point(30, 60);
             buttonPanel.Name = "buttonPanel";
-            buttonPanel.Size = new Size(206, 300);
+            buttonPanel.Size = new Size(206, 370);
             buttonPanel.TabIndex = 1;
             buttonPanel.WrapContents = false;
+            // 
+            // viewApprovedPostsButton
+            // 
+            viewApprovedPostsButton.Location = new Point(3, 291);
+            viewApprovedPostsButton.Name = "viewApprovedPostsButton";
+            viewApprovedPostsButton.Size = new Size(200, 30);
+            viewApprovedPostsButton.TabIndex = 8;
+            viewApprovedPostsButton.Text = "View Approved Posts";
+            viewApprovedPostsButton.UseVisualStyleBackColor = true;
+            // 
+            // viewFinishedPostsButton
+            // 
+            viewFinishedPostsButton.Location = new Point(3, 327);
+            viewFinishedPostsButton.Name = "viewFinishedPostsButton";
+            viewFinishedPostsButton.Size = new Size(200, 30);
+            viewFinishedPostsButton.TabIndex = 9;
+            viewFinishedPostsButton.Text = "View Finished Posts";
+            viewFinishedPostsButton.UseVisualStyleBackColor = true;
             // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(378, 450);
+            ClientSize = new Size(378, 520);
             Controls.Add(welcomeLabel);
             Controls.Add(buttonPanel);
             Controls.Add(logoutButton);
