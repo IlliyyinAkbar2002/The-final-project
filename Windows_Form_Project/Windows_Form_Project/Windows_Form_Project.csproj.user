@@ -31,9 +31,6 @@
     <Compile Update="Forms\SearchUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\SelectStatusForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\ViewProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
