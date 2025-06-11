@@ -9,13 +9,14 @@ namespace Windows_Form_Project.Forms
     public partial class RegisterForm : Form
     {
         private UserManager userManager;
-        private Form landingPage;
+        
+        
 
         public RegisterForm(UserManager userManager)
         {
             InitializeComponent();
             this.userManager = userManager;
-            this.landingPage = landingPage;
+            
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -53,7 +54,15 @@ namespace Windows_Form_Project.Forms
                 userManager.Register(username, password, role, nama, nik, rt, rw);
                 MessageBox.Show("Registration successful!");
                 this.Close();
-                AppStateManager.ChangeState(State.Home);
+
+                if (AppStateManager.IsLoggedIn)
+                {
+                    AppStateManager.ChangeState(State.MainMenu, AppStateManager.GetCurrentUser());
+                }
+                else
+                {
+                    AppStateManager.ChangeState(State.Home);
+                }
 
             }
             catch (Exception ex)
@@ -65,10 +74,36 @@ namespace Windows_Form_Project.Forms
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            AppStateManager.ChangeState(State.Home);
+
+            if (AppStateManager.IsLoggedIn)
+            {
+                AppStateManager.ChangeState(State.MainMenu, AppStateManager.GetCurrentUser());
+            }
+            else
+            {
+                AppStateManager.ChangeState(State.Home);
+            }
+        }
+
+
+        private void RegisterForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (AppStateManager.GetCurrentUser != null)
+            {
+                AppStateManager.ChangeState(State.MainMenu);
+            }
+            else
+            {
+                AppStateManager.ChangeState(State.Home);
+            }
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -38,6 +38,7 @@
             usernameTextBox.PlaceholderText = "Username";
             usernameTextBox.Size = new Size(200, 23);
             usernameTextBox.TabIndex = 0;
+            usernameTextBox.TextChanged += usernameTextBox_TextChanged;
             // 
             // passwordTextBox
             // 
@@ -118,6 +119,8 @@
             Load += RegisterForm_Load;
             ResumeLayout(false);
             PerformLayout();
+            
+
         }
 
         #endregion
