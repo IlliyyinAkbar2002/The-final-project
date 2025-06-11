@@ -48,10 +48,10 @@ namespace Windows_Form_Project.Forms
 
             // Table-driven configuration per role
             AddAction(viewProfileButton, ViewProfile); // shared by all roles
+            AddAction(createPostButton, CreatePost);
 
             if (currentUser.Role == Role.Admin)
             {
-                AddAction(createPostButton, CreatePost);
                 AddAction(searchUserButton, SearchUser);
                 AddAction(createUserButton, CreateUser);
                 AddAction(viewAllPostsButton, ViewAllPosts);
@@ -65,7 +65,6 @@ namespace Windows_Form_Project.Forms
             }
             else // Masyarakat
             {
-                AddAction(createPostButton, CreatePost);
                 AddAction(viewAllPostsButton, ViewMyPosts);
                 AddAction(deletePostButton, DeleteOwnPost);
             }
@@ -102,19 +101,47 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.SearchUser, currentUser);
         }
 
-        private void CreateUser() => MessageBox.Show("Create User Clicked");
+        private void CreateUser()
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.Register, currentUser);
+        }
 
-        private void ViewAllPosts() => MessageBox.Show("View All Posts Clicked");
+        private void ViewAllPosts()
+        {
+            var form = new PostForm("Approved", currentUser); // Admin: view/delete approved posts
+            form.ShowDialog();
+        }
 
-        private void ReviewPending() => MessageBox.Show("Review Pending Posts Clicked");
+        private void ReviewPending()
+        {
+            var form = new PostForm("Pending", currentUser); // Lurah: approve/reject
+            form.ShowDialog();
+        }
 
-        private void ReviewApproved() => MessageBox.Show("Review Approved Posts Clicked");
+        private void ReviewApproved()
+        {
+            var form = new PostForm("Approved", currentUser); // Lurah: finish approved posts
+            form.ShowDialog();
+        }
 
-        private void ViewMyPosts() => MessageBox.Show("View My Posts Clicked");
+        private void ViewMyPosts()
+        {
+            var form = new PostForm("MyPosts", currentUser); // Masyarakat: view/delete own posts
+            form.ShowDialog();
+        }
 
-        private void DeletePost() => MessageBox.Show("Delete Post Clicked");
+        private void DeletePost()
+        {
+            var form = new PostForm("Approved", currentUser); // Admin: same form, delete on click
+            form.ShowDialog();
+        }
 
-        private void DeleteOwnPost() => MessageBox.Show("Delete Own Post Clicked");
+        private void DeleteOwnPost()
+        {
+            var form = new PostForm("MyPosts", currentUser); // Masyarakat: same form, delete on click
+            form.ShowDialog();
+        }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
@@ -127,6 +154,11 @@ namespace Windows_Form_Project.Forms
         private void welcomeLabel_Click(object sender, EventArgs e) { }
 
         private void createPostButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewAllPostsButton_Click(object sender, EventArgs e)
         {
 
         }

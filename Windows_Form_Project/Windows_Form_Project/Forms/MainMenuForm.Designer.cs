@@ -96,6 +96,7 @@
             viewAllPostsButton.TabIndex = 4;
             viewAllPostsButton.Text = "View All Posts";
             viewAllPostsButton.UseVisualStyleBackColor = true;
+            viewAllPostsButton.Click += viewAllPostsButton_Click;
             // 
             // approveRejectButton
             // 
