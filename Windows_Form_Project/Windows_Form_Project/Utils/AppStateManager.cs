@@ -94,7 +94,7 @@ namespace Windows_Form_Project.Utils
                         MessageBox.Show("You must be logged in to search for users.");
                         return;
                     }
-                    CurrentForm = new SearchUserForm(currentUser, UserManager.GetInstance(), currentUser);
+                    CurrentForm = new SearchUserForm(currentUser, UserManager.GetInstance());
                     break;
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using Windows_Form_Project.Models;
 using Windows_Form_Project.Services;
@@ -38,7 +39,9 @@ namespace Windows_Form_Project.Forms
                 viewAllPostsButton,
                 approveRejectButton,
                 changeStatusButton,
-                deletePostButton
+                deletePostButton,
+                viewFinishedPostsButton,
+                viewApprovedPostsButton
             };
 
             foreach (var btn in allButtons)
@@ -48,30 +51,33 @@ namespace Windows_Form_Project.Forms
 
             // Table-driven configuration per role
             AddAction(viewProfileButton, ViewProfile); // shared by all roles
+            AddAction(createPostButton, CreatePost);
+            AddAction(viewApprovedPostsButton, ViewAllApprovedPosts); // Global approved posts
+            AddAction(viewFinishedPostsButton, ViewFinishedPosts);
 
             if (currentUser.Role == Role.Admin)
             {
-                AddAction(createPostButton, CreatePost);
                 AddAction(searchUserButton, SearchUser);
                 AddAction(createUserButton, CreateUser);
-                AddAction(viewAllPostsButton, ViewAllPosts);
-                AddAction(deletePostButton, DeletePost);
+                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
             }
             else if (currentUser.Role == Role.Lurah)
             {
                 AddAction(approveRejectButton, ReviewPending);
                 AddAction(changeStatusButton, ReviewApproved);
-                AddAction(deletePostButton, DeletePost);
+                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
+                AddAction(viewFinishedPostsButton, ViewFinishedPosts);
             }
             else // Masyarakat
             {
-                AddAction(createPostButton, CreatePost);
-                AddAction(viewAllPostsButton, ViewMyPosts);
-                AddAction(deletePostButton, DeleteOwnPost);
+                // Global finished posts
+                AddAction(viewAllPostsButton, ViewMyPosts);                // Own posts
             }
 
             // Reposition logout below visible buttons
             logoutButton.Location = new Point(30, buttonPanel.Bottom + 10);
+            this.Height = logoutButton.Bottom + 50; // gives 50px margin at the bottom
+
         }
 
         private void AddAction(Button button, Action action)
@@ -102,19 +108,41 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.SearchUser, currentUser);
         }
 
-        private void CreateUser() => MessageBox.Show("Create User Clicked");
+        private void CreateUser()
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.Register, currentUser);
+        }
 
-        private void ViewAllPosts() => MessageBox.Show("View All Posts Clicked");
+        private void ViewAllApprovedPosts()
+        {
+            var form = new PostForm("Approved", currentUser);
+            form.ShowDialog();
+        }
 
-        private void ReviewPending() => MessageBox.Show("Review Pending Posts Clicked");
+        private void ViewFinishedPosts()
+        {
+            var form = new PostForm("Finished", currentUser);
+            form.ShowDialog();
+        }
 
-        private void ReviewApproved() => MessageBox.Show("Review Approved Posts Clicked");
+        private void ReviewPending()
+        {
+            var form = new PostForm("Pending", currentUser);
+            form.ShowDialog();
+        }
 
-        private void ViewMyPosts() => MessageBox.Show("View My Posts Clicked");
+        private void ReviewApproved()
+        {
+            var form = new PostForm("Approved", currentUser);
+            form.ShowDialog();
+        }
 
-        private void DeletePost() => MessageBox.Show("Delete Post Clicked");
-
-        private void DeleteOwnPost() => MessageBox.Show("Delete Own Post Clicked");
+        private void ViewMyPosts()
+        {
+            var form = new PostForm("MyPosts", currentUser);
+            form.ShowDialog();
+        }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
@@ -126,7 +154,14 @@ namespace Windows_Form_Project.Forms
 
         private void welcomeLabel_Click(object sender, EventArgs e) { }
 
-        private void createPostButton_Click(object sender, EventArgs e)
+        private void createPostButton_Click(object sender, EventArgs e) { }
+
+        private void viewAllPostsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewAllPostsButton_Click_1(object sender, EventArgs e)
         {
 
         }

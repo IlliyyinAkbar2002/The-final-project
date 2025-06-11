@@ -55,23 +55,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\Tugas\\10\\UAS\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
+      "projectUniqueName": "D:\\Kuliah\\GitKpl\\New\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
       "projectName": "Windows_Form_Project",
-      "projectPath": "C:\\Users\\HP\\Documents\\Tugas\\10\\UAS\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\Tugas\\10\\UAS\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\obj\\",
+      "projectPath": "D:\\Kuliah\\GitKpl\\New\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\Windows_Form_Project.csproj",
+      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
+      "outputPath": "D:\\Kuliah\\GitKpl\\New\\The-final-project\\Windows_Form_Project\\Windows_Form_Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -98,7 +98,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -128,7 +128,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
