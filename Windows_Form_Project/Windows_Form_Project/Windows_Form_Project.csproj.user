@@ -22,7 +22,7 @@
     <Compile Update="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\SearchUser.cs">
+    <Compile Update="Forms\SearchUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\ViewProfileForm.cs">

@@ -96,7 +96,11 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.CreatePost, currentUser);
         }
 
-        private void SearchUser() => MessageBox.Show("Search User Clicked");
+        private void SearchUser()
+        {
+            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
+            AppStateManager.ChangeState(State.SearchUser, currentUser);
+        }
 
         private void CreateUser() => MessageBox.Show("Create User Clicked");
 

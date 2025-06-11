@@ -16,6 +16,7 @@ namespace Windows_Form_Project.Utils
 
         ViewProfile,
         CreatePost,
+        SearchUser,
 
     }
 
@@ -69,10 +70,14 @@ namespace Windows_Form_Project.Utils
                     return;
 
                 case State.ViewProfile:
-                    CurrentForm = new ViewProfileForm(currentUser, UserManager.GetInstance());
-                    CurrentForm.Show();
+                    if (currentUser == null)
+                    {
+                        MessageBox.Show("You must be logged in to view the profile.");
+                        return;
+                    }
+                    CurrentForm = new ViewProfileForm(currentUser, UserManager.GetInstance(), currentUser); // pass currentSessionUser
+                    break;
 
-                    return;
 
                 case State.CreatePost:
                     if (currentUser == null)
@@ -82,6 +87,16 @@ namespace Windows_Form_Project.Utils
                     }
                     CurrentForm = new CreatePostForm(currentUser); // Pass username
                     break;
+
+                case State.SearchUser:
+                    if (currentUser == null)
+                    {
+                        MessageBox.Show("You must be logged in to search for users.");
+                        return;
+                    }
+                    CurrentForm = new SearchUserForm(currentUser, UserManager.GetInstance(), currentUser);
+                    break;
+
 
 
                 default:

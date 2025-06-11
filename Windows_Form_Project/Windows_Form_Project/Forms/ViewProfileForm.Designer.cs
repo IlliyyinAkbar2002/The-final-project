@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            buttonUpdate = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -38,13 +39,23 @@
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
-            textBox4 = new TextBox();
             textBox5 = new TextBox();
             textBox6 = new TextBox();
             textBox7 = new TextBox();
             button1 = new Button();
             label1 = new Label();
+            comboBoxRole = new ComboBox();
             SuspendLayout();
+            // 
+            // buttonUpdate
+            // 
+            buttonUpdate.Location = new Point(220, 300);
+            buttonUpdate.Name = "buttonUpdate";
+            buttonUpdate.Size = new Size(120, 30);
+            buttonUpdate.TabIndex = 0;
+            buttonUpdate.Text = "Update Profile";
+            buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // label2
             // 
@@ -97,7 +108,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(46, 230);
             label7.Name = "label7";
-            label7.Size = new Size(20, 15);
+            label7.Size = new Size(19, 15);
             label7.TabIndex = 6;
             label7.Text = "RT";
             // 
@@ -134,14 +145,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(143, 23);
             textBox3.TabIndex = 10;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(140, 164);
-            textBox4.Margin = new Padding(3, 2, 3, 2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(143, 23);
-            textBox4.TabIndex = 11;
             // 
             // textBox5
             // 
@@ -189,17 +192,26 @@
             label1.Text = "My Profile";
             label1.Click += label1_Click;
             // 
+            // comboBoxRole
+            // 
+            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxRole.Location = new Point(140, 164);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(143, 23);
+            comboBoxRole.TabIndex = 11;
+            // 
             // ViewProfileForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(733, 338);
+            Controls.Add(buttonUpdate);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(textBox7);
             Controls.Add(textBox6);
             Controls.Add(textBox5);
-            Controls.Add(textBox4);
+            Controls.Add(comboBoxRole);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
@@ -213,6 +225,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "ViewProfileForm";
             Text = "ViewProfile";
+            Load += ViewProfileForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -228,11 +241,14 @@
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
-        private TextBox textBox4;
+        private ComboBox comboBoxRole;
+
         private TextBox textBox5;
         private TextBox textBox6;
         private TextBox textBox7;
         private Button button1;
         private Label label1;
+        private System.Windows.Forms.Button buttonUpdate;
+
     }
 }
