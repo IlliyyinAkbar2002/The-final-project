@@ -63,7 +63,7 @@
             label1.Size = new Size(404, 111);
             label1.TabIndex = 2;
             label1.Text = "Selamat Datang di Lapor Desa\r\n\r\nSilahkan pilih :\r\n";
-            label1.Click += label1_Click_1;
+
             // 
             // LandingPageForm
             // 
@@ -75,7 +75,7 @@
             Controls.Add(loginButton);
             Name = "LandingPageForm";
             Text = "Home";
-            Load += LandingPageForm_Load;
+
             ResumeLayout(false);
             PerformLayout();
         }

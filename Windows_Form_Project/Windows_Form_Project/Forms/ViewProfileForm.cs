@@ -8,15 +8,15 @@ namespace Windows_Form_Project.Forms
 {
     public partial class ViewProfileForm : Form
     {
-        private readonly User userToEdit;
-        private readonly UserManager userManager;
-        private readonly User currentSessionUser;
+        private readonly User _userToEdit;
+        private readonly UserManager _userManager;
+        private readonly User _currentSessionUser;
 
         public ViewProfileForm(User userToEdit, UserManager userManager, User currentSessionUser = null)
         {
-            this.userToEdit = userToEdit;
-            this.userManager = userManager;
-            this.currentSessionUser = currentSessionUser;
+            _userToEdit = userToEdit;
+            _userManager = userManager;
+            _currentSessionUser = currentSessionUser;
 
             InitializeComponent();
             PopulateProfileFields();
@@ -24,55 +24,49 @@ namespace Windows_Form_Project.Forms
 
         private void PopulateProfileFields()
         {
-            textBox1.Text = userToEdit.Username;
-            textBox2.Text = userToEdit.Password;
-            textBox3.Text = userToEdit.Nama;
+            textBox1.Text = _userToEdit.Username;
+            textBox2.Text = _userToEdit.Password;
+            textBox3.Text = _userToEdit.Nama;
 
             // Populate the ComboBox with Role enum names
-            comboBoxRole.Items.Clear(); // Optional: clear existing items to avoid duplicates
+            comboBoxRole.Items.Clear();
             comboBoxRole.Items.AddRange(Enum.GetNames(typeof(Role)));
-            comboBoxRole.SelectedItem = userToEdit.Role.ToString(); // ✅ Use userToEdit here
+            comboBoxRole.SelectedItem = _userToEdit.Role.ToString();
             comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
 
-
-            textBox5.Text = userToEdit.NIK;
-            textBox6.Text = userToEdit.RT;
-            textBox7.Text = userToEdit.RW;
-
-            // Optional: make role not manually editable
-            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            textBox5.Text = _userToEdit.NIK;
+            textBox6.Text = _userToEdit.RT;
+            textBox7.Text = _userToEdit.RW;
         }
-
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             // Update user object from form inputs
-            userToEdit.Username = textBox1.Text;
-            userToEdit.Password = textBox2.Text;
-            userToEdit.Nama = textBox3.Text;
+            _userToEdit.Username = textBox1.Text;
+            _userToEdit.Password = textBox2.Text;
+            _userToEdit.Nama = textBox3.Text;
 
-            // ✅ Get role from ComboBox
+            // Get role from ComboBox
             if (Enum.TryParse(comboBoxRole.SelectedItem.ToString(), out Role parsedRole))
             {
-                userToEdit.Role = parsedRole;
+                _userToEdit.Role = parsedRole;
             }
 
-            userToEdit.NIK = textBox5.Text;
-            userToEdit.RT = textBox6.Text;
-            userToEdit.RW = textBox7.Text;
+            _userToEdit.NIK = textBox5.Text;
+            _userToEdit.RT = textBox6.Text;
+            _userToEdit.RW = textBox7.Text;
 
             MessageBox.Show("User profile updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
 
             // Go back to main menu only if called from current user
-            if (currentSessionUser != null)
+            if (_currentSessionUser != null)
             {
-                AppStateManager.ChangeState(State.MainMenu, currentSessionUser);
+                AppStateManager.ChangeState(State.MainMenu, _currentSessionUser);
             }
         }
 
@@ -86,7 +80,5 @@ namespace Windows_Form_Project.Forms
         {
 
         }
-
-        
     }
 }

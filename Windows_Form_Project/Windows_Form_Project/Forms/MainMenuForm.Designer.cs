@@ -55,7 +55,7 @@
             welcomeLabel.Size = new Size(136, 21);
             welcomeLabel.TabIndex = 0;
             welcomeLabel.Text = "Welcome, [User]";
-            welcomeLabel.Click += welcomeLabel_Click;
+
             // 
             // viewProfileButton
             // 
@@ -101,7 +101,7 @@
             viewAllPostsButton.TabIndex = 4;
             viewAllPostsButton.Text = "View My Posts";
             viewAllPostsButton.UseVisualStyleBackColor = true;
-            viewAllPostsButton.Click += viewAllPostsButton_Click_1;
+
             // 
             // approveRejectButton
             // 
@@ -188,7 +188,7 @@
             Controls.Add(logoutButton);
             Name = "MainMenuForm";
             Text = "Main Menu";
-            Load += MainMenuForm_Load;
+
             buttonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

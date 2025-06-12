@@ -65,7 +65,7 @@
             label2.Size = new Size(60, 15);
             label2.TabIndex = 1;
             label2.Text = "Username";
-            label2.Click += label2_Click;
+
             // 
             // label3
             // 
@@ -190,7 +190,7 @@
             label1.Size = new Size(89, 21);
             label1.TabIndex = 0;
             label1.Text = "My Profile";
-            label1.Click += label1_Click;
+
             // 
             // comboBoxRole
             // 

@@ -68,7 +68,7 @@
             label2.Size = new Size(120, 28);
             label2.TabIndex = 3;
             label2.Text = "Delete Post";
-            label2.Click += label2_Click;
+
             // 
             // DeletePost
             // 

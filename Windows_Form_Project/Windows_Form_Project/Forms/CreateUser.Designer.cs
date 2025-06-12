@@ -179,7 +179,7 @@
             label1.Size = new Size(121, 28);
             label1.TabIndex = 33;
             label1.Text = "Create User";
-            label1.Click += label1_Click;
+
             // 
             // checkBox1
             // 
