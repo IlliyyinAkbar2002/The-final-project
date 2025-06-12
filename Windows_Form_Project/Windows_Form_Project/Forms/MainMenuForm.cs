@@ -10,25 +10,23 @@ namespace Windows_Form_Project.Forms
 {
     public partial class MainMenuForm : Form
     {
-        private readonly User currentUser;
-        private readonly UserManager userManager;
-
-        private Dictionary<Button, Action> actionMap;
+        private readonly User _currentUser;
+        private readonly UserManager _userManager;
+        private Dictionary<Button, Action> _actionMap;
 
         public MainMenuForm(User user, UserManager userManager)
         {
             InitializeComponent();
-            this.currentUser = user;
-            this.userManager = userManager;
+            _currentUser = user;
+            _userManager = userManager;
 
             welcomeLabel.Text = $"Welcome, {user.Nama}! Role: {user.Role}";
-
             SetupRoleMenu();
         }
 
         private void SetupRoleMenu()
         {
-            actionMap = new Dictionary<Button, Action>();
+            _actionMap = new Dictionary<Button, Action>();
 
             var allButtons = new List<Button>
             {
@@ -55,23 +53,22 @@ namespace Windows_Form_Project.Forms
             AddAction(viewApprovedPostsButton, ViewAllApprovedPosts); // Global approved posts
             AddAction(viewFinishedPostsButton, ViewFinishedPosts);
 
-            if (currentUser.Role == Role.Admin)
+            // Role-specific actions
+            switch (_currentUser.Role)
             {
-                AddAction(searchUserButton, SearchUser);
-                AddAction(createUserButton, CreateUser);
-                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
-            }
-            else if (currentUser.Role == Role.Lurah)
-            {
-                AddAction(approveRejectButton, ReviewPending);
-                AddAction(changeStatusButton, ReviewApproved);
-                AddAction(viewApprovedPostsButton, ViewAllApprovedPosts);
-                AddAction(viewFinishedPostsButton, ViewFinishedPosts);
-            }
-            else // Masyarakat
-            {
-                // Global finished posts
-                AddAction(viewAllPostsButton, ViewMyPosts);                // Own posts
+                case Role.Admin:
+                    AddAction(searchUserButton, SearchUser);
+                    AddAction(createUserButton, CreateUser);
+                    break;
+
+                case Role.Lurah:
+                    AddAction(approveRejectButton, ReviewPending);
+                    AddAction(changeStatusButton, ReviewApproved);
+                    break;
+
+                case Role.Masyarakat:
+                    AddAction(viewAllPostsButton, ViewMyPosts);
+                    break;
             }
 
             // Reposition logout below visible buttons
@@ -82,7 +79,7 @@ namespace Windows_Form_Project.Forms
 
         private void AddAction(Button button, Action action)
         {
-            actionMap[button] = action;
+            _actionMap[button] = action;
             button.Visible = true;
             button.Click += (s, e) => action.Invoke();
         }
@@ -90,57 +87,55 @@ namespace Windows_Form_Project.Forms
         // =========================
         // === Button Logic Below ===
         // =========================
+        // Navigation actions
         private void ViewProfile()
         {
-            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
-            AppStateManager.ChangeState(State.ViewProfile, currentUser);
+            AppStateManager.ChangeState(State.ViewProfile, _currentUser);
         }
 
         private void CreatePost()
         {
-            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
-            AppStateManager.ChangeState(State.CreatePost, currentUser);
+            AppStateManager.ChangeState(State.CreatePost, _currentUser);
         }
 
         private void SearchUser()
         {
-            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
-            AppStateManager.ChangeState(State.SearchUser, currentUser);
+            AppStateManager.ChangeState(State.SearchUser, _currentUser);
         }
 
         private void CreateUser()
         {
-            UserManager.GetInstance().Authenticate(currentUser.Username, currentUser.Password);
-            AppStateManager.ChangeState(State.Register, currentUser);
+            AppStateManager.ChangeState(State.Register, _currentUser);
         }
 
+        // Post-related actions
         private void ViewAllApprovedPosts()
         {
-            var form = new PostForm("Approved", currentUser);
+            var form = new PostForm("Approved", _currentUser);
             form.ShowDialog();
         }
 
         private void ViewFinishedPosts()
         {
-            var form = new PostForm("Finished", currentUser);
+            var form = new PostForm("Finished", _currentUser);
             form.ShowDialog();
         }
 
         private void ReviewPending()
         {
-            var form = new PostForm("Pending", currentUser);
+            var form = new PostForm("Pending", _currentUser);
             form.ShowDialog();
         }
 
         private void ReviewApproved()
         {
-            var form = new PostForm("Approved", currentUser);
+            var form = new PostForm("Approved", _currentUser);
             form.ShowDialog();
         }
 
         private void ViewMyPosts()
         {
-            var form = new PostForm("MyPosts", currentUser);
+            var form = new PostForm("MyPosts", _currentUser);
             form.ShowDialog();
         }
 
@@ -150,20 +145,6 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.Logout);
         }
 
-        private void MainMenuForm_Load(object sender, EventArgs e) { }
 
-        private void welcomeLabel_Click(object sender, EventArgs e) { }
-
-        private void createPostButton_Click(object sender, EventArgs e) { }
-
-        private void viewAllPostsButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void viewAllPostsButton_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -13,19 +13,17 @@ namespace Windows_Form_Project.Utils
         Register,
         MainMenu,
         Logout,
-
         ViewProfile,
         CreatePost,
-        SearchUser,
-
+        SearchUser
     }
 
     public static class AppStateManager
     {
-        public static State CurrentState { get; private set; } 
+        public static State CurrentState { get; private set; }
         public static Form CurrentForm { get; private set; }
-        public static User currentUser { get; private set; }
-        public static bool IsLoggedIn => currentUser != null;
+        public static User CurrentUser { get; private set; }
+        public static bool IsLoggedIn => CurrentUser != null;
 
         public static void ChangeState(State newState, User userContext = null)
         {
@@ -53,51 +51,46 @@ namespace Windows_Form_Project.Utils
                     break;
 
                 case State.MainMenu:
-
                     if (userContext == null)
                     {
                         MessageBox.Show("MainMenu requires a logged-in user.");
                         return;
                     }
-
-                    currentUser = userContext;
+                    CurrentUser = userContext;
                     CurrentForm = new MainMenuForm(userContext, UserManager.GetInstance());
                     break;
 
                 case State.Logout:
-                    currentUser = null;
-                    ChangeState(State.Home); // Go back to Home screen on logout
+                    CurrentUser = null;
+                    ChangeState(State.Home);
                     return;
 
                 case State.ViewProfile:
-                    if (currentUser == null)
+                    if (CurrentUser == null)
                     {
                         MessageBox.Show("You must be logged in to view the profile.");
                         return;
                     }
-                    CurrentForm = new ViewProfileForm(currentUser, UserManager.GetInstance(), currentUser); // pass currentSessionUser
+                    CurrentForm = new ViewProfileForm(CurrentUser, UserManager.GetInstance(), CurrentUser);
                     break;
 
-
                 case State.CreatePost:
-                    if (currentUser == null)
+                    if (CurrentUser == null)
                     {
                         MessageBox.Show("You must be logged in to create a post.");
                         return;
                     }
-                    CurrentForm = new CreatePostForm(currentUser); // Pass username
+                    CurrentForm = new CreatePostForm(CurrentUser);
                     break;
 
                 case State.SearchUser:
-                    if (currentUser == null)
+                    if (CurrentUser == null)
                     {
                         MessageBox.Show("You must be logged in to search for users.");
                         return;
                     }
-                    CurrentForm = new SearchUserForm(currentUser, UserManager.GetInstance());
+                    CurrentForm = new SearchUserForm(CurrentUser, UserManager.GetInstance());
                     break;
-
-
 
                 default:
                     MessageBox.Show("Invalid state.");
@@ -106,13 +99,13 @@ namespace Windows_Form_Project.Utils
 
             CurrentForm.Show();
         }
-        public static User GetCurrentUser() => currentUser;
+
+        public static User GetCurrentUser() => CurrentUser;
 
         public static void Logout()
         {
-            currentUser = null;
+            CurrentUser = null;
         }
-
     }
 }
 

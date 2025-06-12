@@ -10,16 +10,16 @@ namespace Windows_Form_Project.Forms
         public enum PostAction { None, Delete, Approve, Reject, Finish }
         public PostAction SelectedAction { get; private set; } = PostAction.None;
 
-        private readonly Post post;
-        private readonly string context;
-        private readonly Role role;
+        private readonly Post _post;
+        private readonly string _context;
+        private readonly Role _role;
 
         public PostDetailDialog(Post post, string context, Role role)
         {
             InitializeComponent();
-            this.post = post;
-            this.context = context;
-            this.role = role;
+            _post = post;
+            _context = context;
+            _role = role;
             DisplayPostDetails();
             SetupButtons();
         }
@@ -27,25 +27,25 @@ namespace Windows_Form_Project.Forms
         private void DisplayPostDetails()
         {
             textBoxDetails.Text =
-                $"Title: {post.Title}\r\n" +
-                $"Author: {post.Author}\r\n" +
-                $"Created: {post.CreatedAt:g}\r\n" +
-                $"Status: {post.Status}\r\n\r\n" +
-                $"{post.Content}";
+                $"Title: {_post.Title}\r\n" +
+                $"Author: {_post.Author}\r\n" +
+                $"Created: {_post.CreatedAt:g}\r\n" +
+                $"Status: {_post.Status}\r\n\r\n" +
+                $"{_post.Content}";
         }
 
         private void SetupButtons()
         {
-            if (role == Role.Admin && context == "Approved")
+            if (_role == Role.Admin && _context == "Approved")
                 AddActionButton("Delete", PostAction.Delete);
-            else if (role == Role.Lurah && context == "Pending")
+            else if (_role == Role.Lurah && _context == "Pending")
             {
                 AddActionButton("Approve", PostAction.Approve);
                 AddActionButton("Reject", PostAction.Reject);
             }
-            else if (role == Role.Lurah && context == "Approved")
+            else if (_role == Role.Lurah && _context == "Approved")
                 AddActionButton("Finish", PostAction.Finish);
-            else if (role == Role.Masyarakat && context == "MyPosts")
+            else if (_role == Role.Masyarakat && _context == "MyPosts")
                 AddActionButton("Delete", PostAction.Delete);
         }
 

@@ -8,14 +8,12 @@ namespace Windows_Form_Project.Forms
 {
     public partial class LoginForm : Form
     {
-        private UserManager userManager;
-        private LandingPageForm landingPage;
+        private readonly UserManager _userManager;
 
         public LoginForm(UserManager userManager)
         {
             InitializeComponent();
-            this.userManager = userManager;
-            this.landingPage = landingPage;
+            _userManager = userManager;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -31,12 +29,10 @@ namespace Windows_Form_Project.Forms
 
             try
             {
-                var user = userManager.Authenticate(username, password);
+                var user = _userManager.Authenticate(username, password);
                 MessageBox.Show($"Selamat datang, {user.Nama}!");
 
-                // ✅ Automata-based transition
                 AppStateManager.ChangeState(State.MainMenu, user);
-
                 this.Close();
             }
             catch (Exception ex)
@@ -44,7 +40,6 @@ namespace Windows_Form_Project.Forms
                 MessageBox.Show(ex.Message, "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
