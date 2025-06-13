@@ -4,12 +4,6 @@
     <Compile Update="Forms\CreatePostForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\CreateUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\DeletePost.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\LandingPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
