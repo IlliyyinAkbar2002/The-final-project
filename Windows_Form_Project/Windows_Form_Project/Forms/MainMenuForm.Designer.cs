@@ -177,6 +177,7 @@
             viewFinishedPostsButton.TabIndex = 9;
             viewFinishedPostsButton.Text = "View Finished Posts";
             viewFinishedPostsButton.UseVisualStyleBackColor = true;
+            viewFinishedPostsButton.Click += viewFinishedPostsButton_Click;
             // 
             // MainMenuForm
             // 

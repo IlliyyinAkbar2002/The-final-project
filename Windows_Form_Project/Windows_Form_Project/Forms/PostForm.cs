@@ -30,12 +30,16 @@ namespace Windows_Form_Project.Forms
                 case "Approved":
                     filteredPosts = postManager.GetPostsByStatus(PostStatus.Approved);
                     break;
+                case "Finished":
+                    filteredPosts = postManager.GetPostsByStatus(PostStatus.Finished);
+                    break;
                 case "Pending":
                     filteredPosts = postManager.GetPostsByStatus(PostStatus.Pending);
                     break;
                 case "MyPosts":
                     filteredPosts = postManager.GetPostsByAuthor(currentUser.Username);
                     break;
+
             }
 
             PopulateListView(filteredPosts);
@@ -114,6 +118,11 @@ namespace Windows_Form_Project.Forms
         private void PostForm_Load(object sender, EventArgs e) { }
 
         private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

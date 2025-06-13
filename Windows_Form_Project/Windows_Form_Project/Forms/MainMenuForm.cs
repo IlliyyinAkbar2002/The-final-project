@@ -165,5 +165,10 @@ namespace Windows_Form_Project.Forms
         {
 
         }
+
+        private void viewFinishedPostsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

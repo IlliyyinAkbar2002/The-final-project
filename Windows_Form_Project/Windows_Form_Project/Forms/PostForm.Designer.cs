@@ -48,6 +48,7 @@
             listViewPosts.UseCompatibleStateImageBehavior = false;
             listViewPosts.View = View.Details;
             listViewPosts.ItemActivate += listViewPosts_ItemActivate;
+            listViewPosts.SelectedIndexChanged += listViewPosts_SelectedIndexChanged;
             // 
             // columnTitle
             // 
