@@ -55,7 +55,6 @@
             welcomeLabel.Size = new Size(136, 21);
             welcomeLabel.TabIndex = 0;
             welcomeLabel.Text = "Welcome, [User]";
-
             // 
             // viewProfileButton
             // 
@@ -101,7 +100,6 @@
             viewAllPostsButton.TabIndex = 4;
             viewAllPostsButton.Text = "View My Posts";
             viewAllPostsButton.UseVisualStyleBackColor = true;
-
             // 
             // approveRejectButton
             // 
@@ -177,6 +175,7 @@
             viewFinishedPostsButton.TabIndex = 9;
             viewFinishedPostsButton.Text = "View Finished Posts";
             viewFinishedPostsButton.UseVisualStyleBackColor = true;
+            viewFinishedPostsButton.Click += viewFinishedPostsButton_Click;
             // 
             // MainMenuForm
             // 
@@ -188,7 +187,6 @@
             Controls.Add(logoutButton);
             Name = "MainMenuForm";
             Text = "Main Menu";
-
             buttonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

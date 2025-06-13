@@ -30,6 +30,9 @@ namespace Windows_Form_Project.Forms
                 case "Approved":
                     filteredPosts = postManager.GetPostsByStatus(PostStatus.Approved);
                     break;
+                case "Finished":
+                    filteredPosts = postManager.GetPostsByStatus(PostStatus.Finished);
+                    break;
                 case "Pending":
                     filteredPosts = postManager.GetPostsByStatus(PostStatus.Pending);
                     break;

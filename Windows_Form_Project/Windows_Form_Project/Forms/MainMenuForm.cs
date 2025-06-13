@@ -145,6 +145,9 @@ namespace Windows_Form_Project.Forms
             AppStateManager.ChangeState(State.Logout);
         }
 
+        private void viewFinishedPostsButton_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
