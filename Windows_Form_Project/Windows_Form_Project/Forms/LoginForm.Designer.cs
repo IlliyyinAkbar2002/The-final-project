@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             usernameTextBox = new TextBox();
             passwordTextBox = new TextBox();
             loginButton = new Button();
@@ -63,7 +64,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(400, 160);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(348, 160);
             Controls.Add(usernameTextBox);
             Controls.Add(passwordTextBox);
             Controls.Add(loginButton);

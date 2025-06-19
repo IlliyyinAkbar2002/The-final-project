@@ -21,6 +21,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             usernameTextBox = new TextBox();
             passwordTextBox = new TextBox();
             namaTextBox = new TextBox();
@@ -105,6 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(400, 270);
             Controls.Add(usernameTextBox);
             Controls.Add(passwordTextBox);
@@ -119,7 +121,7 @@
             Load += RegisterForm_Load;
             ResumeLayout(false);
             PerformLayout();
-            
+
 
         }
 
