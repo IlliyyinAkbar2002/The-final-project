@@ -25,6 +25,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostForm));
             listViewPosts = new ListView();
             columnTitle = new ColumnHeader();
             columnAuthor = new ColumnHeader();
@@ -100,6 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(524, 430);
             Controls.Add(textBoxSearch);
             Controls.Add(buttonSearch);

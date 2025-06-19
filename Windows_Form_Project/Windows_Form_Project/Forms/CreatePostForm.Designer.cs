@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreatePostForm));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -41,6 +42,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = SystemColors.ControlLightLight;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(38, 16);
             label1.Name = "label1";
@@ -121,7 +123,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(403, 338);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);

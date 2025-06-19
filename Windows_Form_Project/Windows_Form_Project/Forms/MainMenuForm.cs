@@ -149,5 +149,15 @@ namespace Windows_Form_Project.Forms
         {
 
         }
+
+        private void buttonPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

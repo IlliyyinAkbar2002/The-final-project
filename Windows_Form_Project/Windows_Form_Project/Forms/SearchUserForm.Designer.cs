@@ -17,15 +17,8 @@
 
         private void InitializeComponent()
         {
-            this.buttonEditSelected = new System.Windows.Forms.Button();
-            this.buttonEditSelected.Location = new System.Drawing.Point(20, 320);
-            this.buttonEditSelected.Name = "buttonEditSelected";
-            this.buttonEditSelected.Size = new System.Drawing.Size(120, 25);
-            this.buttonEditSelected.Text = "Edit Selected";
-            this.buttonEditSelected.UseVisualStyleBackColor = true;
-            this.buttonEditSelected.Click += new System.EventHandler(this.buttonEditSelected_Click);
-            this.Controls.Add(this.buttonEditSelected);
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchUserForm));
+            buttonEditSelected = new Button();
             dataGridViewUsers = new DataGridView();
             textBoxSearch = new TextBox();
             comboBoxSearchBy = new ComboBox();
@@ -35,6 +28,16 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).BeginInit();
             SuspendLayout();
             // 
+            // buttonEditSelected
+            // 
+            buttonEditSelected.Location = new Point(20, 320);
+            buttonEditSelected.Name = "buttonEditSelected";
+            buttonEditSelected.Size = new Size(120, 25);
+            buttonEditSelected.TabIndex = 0;
+            buttonEditSelected.Text = "Edit Selected";
+            buttonEditSelected.UseVisualStyleBackColor = true;
+            buttonEditSelected.Click += buttonEditSelected_Click;
+            // 
             // dataGridViewUsers
             // 
             dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -42,7 +45,7 @@
             dataGridViewUsers.Name = "dataGridViewUsers";
             dataGridViewUsers.Size = new Size(650, 250);
             dataGridViewUsers.TabIndex = 0;
-            dataGridViewUsers.CellContentClick += this.dataGridViewUsers_CellContentClick;
+            dataGridViewUsers.CellContentClick += dataGridViewUsers_CellContentClick;
             // 
             // textBoxSearch
             // 
@@ -94,7 +97,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(700, 360);
+            Controls.Add(buttonEditSelected);
             Controls.Add(buttonBack);
             Controls.Add(labelSearchBy);
             Controls.Add(buttonSearch);

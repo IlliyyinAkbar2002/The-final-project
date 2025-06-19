@@ -16,53 +16,56 @@
 
         private void InitializeComponent()
         {
-            this.textBoxDetails = new System.Windows.Forms.TextBox();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostDetailDialog));
+            textBoxDetails = new TextBox();
+            buttonClose = new Button();
+            flowLayoutPanelButtons = new FlowLayoutPanel();
+            SuspendLayout();
             // 
             // textBoxDetails
             // 
-            this.textBoxDetails.Location = new System.Drawing.Point(12, 12);
-            this.textBoxDetails.Multiline = true;
-            this.textBoxDetails.ReadOnly = true;
-            this.textBoxDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDetails.Size = new System.Drawing.Size(460, 240);
-            this.textBoxDetails.TabIndex = 0;
-            // 
-            // flowLayoutPanelButtons
-            // 
-            this.flowLayoutPanelButtons.Location = new System.Drawing.Point(12, 260);
-            this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
-            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(378, 35);
-            this.flowLayoutPanelButtons.TabIndex = 1;
+            textBoxDetails.Location = new Point(12, 12);
+            textBoxDetails.Multiline = true;
+            textBoxDetails.Name = "textBoxDetails";
+            textBoxDetails.ReadOnly = true;
+            textBoxDetails.ScrollBars = ScrollBars.Vertical;
+            textBoxDetails.Size = new Size(460, 240);
+            textBoxDetails.TabIndex = 0;
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(397, 260);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 35);
-            this.buttonClose.TabIndex = 2;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            buttonClose.Location = new Point(397, 260);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(75, 35);
+            buttonClose.TabIndex = 2;
+            buttonClose.Text = "Close";
+            buttonClose.UseVisualStyleBackColor = true;
+            buttonClose.Click += buttonClose_Click;
+            // 
+            // flowLayoutPanelButtons
+            // 
+            flowLayoutPanelButtons.Location = new Point(12, 260);
+            flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
+            flowLayoutPanelButtons.Size = new Size(378, 35);
+            flowLayoutPanelButtons.TabIndex = 1;
             // 
             // PostDetailDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 311);
-            this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.flowLayoutPanelButtons);
-            this.Controls.Add(this.textBoxDetails);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "PostDetailDialog";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Post Details";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(484, 311);
+            Controls.Add(buttonClose);
+            Controls.Add(flowLayoutPanelButtons);
+            Controls.Add(textBoxDetails);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "PostDetailDialog";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Post Details";
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

@@ -20,5 +20,10 @@ namespace Windows_Form_Project.Forms
         {
             AppStateManager.ChangeState(State.Register);
         }
+
+        private void LandingPageForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

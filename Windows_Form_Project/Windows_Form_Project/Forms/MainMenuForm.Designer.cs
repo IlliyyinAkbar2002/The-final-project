@@ -30,6 +30,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuForm));
             welcomeLabel = new Label();
             viewProfileButton = new Button();
             createPostButton = new Button();
@@ -49,6 +50,7 @@
             // welcomeLabel
             // 
             welcomeLabel.AutoSize = true;
+            welcomeLabel.BackColor = Color.White;
             welcomeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             welcomeLabel.Location = new Point(30, 20);
             welcomeLabel.Name = "welcomeLabel";
@@ -141,6 +143,7 @@
             // buttonPanel
             // 
             buttonPanel.AutoSize = true;
+            buttonPanel.BackColor = Color.Transparent;
             buttonPanel.Controls.Add(viewProfileButton);
             buttonPanel.Controls.Add(createPostButton);
             buttonPanel.Controls.Add(searchUserButton);
@@ -157,6 +160,7 @@
             buttonPanel.Size = new Size(206, 370);
             buttonPanel.TabIndex = 1;
             buttonPanel.WrapContents = false;
+            buttonPanel.Paint += buttonPanel_Paint;
             // 
             // viewApprovedPostsButton
             // 
@@ -181,12 +185,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(378, 520);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            ClientSize = new Size(378, 518);
             Controls.Add(welcomeLabel);
             Controls.Add(buttonPanel);
             Controls.Add(logoutButton);
             Name = "MainMenuForm";
             Text = "Main Menu";
+            Load += MainMenuForm_Load;
             buttonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
