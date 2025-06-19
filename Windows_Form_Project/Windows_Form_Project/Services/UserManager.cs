@@ -65,10 +65,12 @@ namespace Windows_Form_Project.Services
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 throw new ArgumentException("Username and password cannot be empty.");
 
-            if (users.Any(u => u.Username == username))
+            var snapshot = users.ToList(); // prevent collection modified error
+
+            if (snapshot.Any(u => u.Username == username))
                 throw new ArgumentException("Username already exists.");
 
-            if (users.Any(u => u.NIK == nik))
+            if (snapshot.Any(u => u.NIK == nik))
                 throw new ArgumentException("NIK sudah terpakai.");
 
             ValidateUserData(nik, rt, rw);
@@ -77,6 +79,7 @@ namespace Windows_Form_Project.Services
             users.Add(newUser);
             SaveUsersToFile();
         }
+
 
         public User? GetUserByUsername(string username)
         {

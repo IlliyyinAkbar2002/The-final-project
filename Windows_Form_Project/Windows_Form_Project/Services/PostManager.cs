@@ -11,6 +11,7 @@ namespace Windows_Form_Project.Services
     {
         private static PostManager _instance;
         private static readonly object _lock = new object();
+
         private List<Post> _posts;
         private readonly string _postsFilePath = "posts.json";
 
